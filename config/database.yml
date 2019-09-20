@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 5 } %>
+  username: <%= ENV['db_username'] %>
+  password: <%= ENV['db_password'] %>
+  database: email_communication_development
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 5 } %>
+  username: <%= ENV['db_username'] %>
+  password: <%= ENV['db_password'] %>
+  database: email_communication_test
