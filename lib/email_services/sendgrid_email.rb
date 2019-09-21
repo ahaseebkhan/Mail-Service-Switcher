@@ -14,6 +14,8 @@ module EmailServices
                      "Authorization": "Bearer #{ENV['SG_KEY']}"
                     }
 
+      sendgrid_params['send_at'] = meta['send_at'].to_i if meta['send_at'].present?
+
       Net::HTTP.post URI('https://api.sendgrid.com/v3/mail/send'), sendgrid_params.to_json, sg_headers
     end
   end

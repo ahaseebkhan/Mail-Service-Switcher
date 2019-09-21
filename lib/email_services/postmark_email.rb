@@ -1,6 +1,9 @@
 module EmailServices
   class PostmarkEmail
-    def send_email(meta)      
+    def send_email(meta)
+      # Don't run postmark if email is scheduled. Postmark API doesn't support scheduling by default
+      return nil if meta['send_at'].present?
+      
       postmark_params = { 
                           "From": "#{meta['from_name']} <#{meta['from']}>", 
                           "To": "#{meta['to_name']} <#{meta['to']}>", 
